@@ -9,46 +9,41 @@
 </head>
 <body>
     <div class="lab-card">
-     <header>
-    <h1>🧬 BioAg Genetics Lab</h1>
-    <div class="custom-select-wrapper">
-        <label for="animal-select">Select Species</label>
-        <div class="select-container">
-            <select id="animal-select">
-                <option value="cow">🐄 Bovine (Black/Red)</option>
-                <option value="sheep">🐑 Ovine (White/Black)</option>
-                <option value="pig">🐖 Porcine (Pink/Black)</option>
-                <option value="horse">🐎 Equine (Bay/Chestnut)</option>
-            </select>
-            <span class="custom-arrow"></span>
-        </div>
-    </div>
-</header>
-        <form id="cross-form" novalidate>
-            <section class="input-grid">
-                <div class="parent-box">
-                    <label for="p1">Sire (Father)</label>
-                    <input type="text" id="p1" value="Bb" maxlength="2" inputmode="text" autocapitalize="off" autocomplete="off" spellcheck="false" aria-describedby="genotype-help error-message">
+        <header>
+            <h1>🧬 BioAg Genetics Lab</h1>
+            <div class="custom-select-wrapper">
+                <label for="animal-select">Select Species</label>
+                <div class="select-container">
+                    <select id="animal-select">
+                        <option value="cow">🐄 Bovine (Black/Red)</option>
+                        <option value="sheep">🐑 Ovine (White/Black)</option>
+                        <option value="pig">🐖 Porcine (Pink/Black)</option>
+                        <option value="horse">🐎 Equine (Bay/Chestnut)</option>
+                    </select>
+                    <span class="custom-arrow"></span>
                 </div>
-                <div class="parent-box">
-                    <label for="p2">Dam (Mother)</label>
-                    <input type="text" id="p2" value="Bb" maxlength="2" inputmode="text" autocapitalize="off" autocomplete="off" spellcheck="false" aria-describedby="genotype-help error-message">
-                </div>
-            </section>
+            </div>
+        </header>
 
-            <p id="genotype-help" class="helper-text">Enter exactly two alleles per parent using only B or b, such as <strong>Bb</strong> or <strong>bb</strong>.</p>
-            <p id="error-message" class="error-message" role="alert" aria-live="assertive"></p>
+        <section class="input-grid">
+            <div class="parent-box">
+                <label>Sire (Father)</label>
+                <input type="text" id="p1" value="Bb" maxlength="2">
+            </div>
+            <div class="parent-box">
+                <label>Dam (Mother)</label>
+                <input type="text" id="p2" value="Bb" maxlength="2">
+            </div>
+        </section>
 
-            <button id="run-btn" type="submit">Run Genetic Cross</button>
-            <button id="run-btn">Run Genetic Cross</button>
-<button onclick="resetLab()" style="background-color: #95a5a6; margin-top: 10px;">Reset Lab</button>
-        </form>
+        <button id="run-btn">Run Genetic Cross</button>
+        <button id="reset-btn" onclick="resetLab()">Reset Lab</button>
 
         <div id="visual-results">
-            <table id="punnett-table" aria-label="Punnett square results"></table>
+            <table id="punnett-table"></table>
         </div>
 
-        <div id="stats-panel" aria-live="polite"></div>
+        <div id="stats-panel"></div>
     </div>
     <script src="script.js"></script>
 </body>
