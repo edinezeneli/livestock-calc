@@ -74,3 +74,83 @@ th { background: #f9f9f9; color: var(--primary); }
   border-radius: 5px;
   border-left: 5px solid var(--accent);
 }
+/* Styling the Header Area */
+header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 20px;
+}
+
+h1 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+/* The Container for the Dropdown */
+.custom-select-wrapper {
+    text-align: left;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.custom-select-wrapper label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+/* The "Glass" Select Box */
+.select-container {
+    position: relative;
+    display: block;
+}
+
+select {
+    appearance: none; /* Removes the ugly default browser arrow */
+    -webkit-appearance: none;
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* Hover & Focus Effects */
+select:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #f9fffb;
+}
+
+/* Creating a Custom Modern Arrow */
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-left: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    transform: translateY(-70%) rotate(-45deg);
+    pointer-events: none; /* Makes sure clicking the arrow still opens the menu */
+}
+
+.select-container:hover .custom-arrow {
+    border-color: var(--accent);
+}
