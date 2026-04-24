@@ -9,17 +9,21 @@
 </head>
 <body>
     <div class="lab-card">
-      <header>
-        <h1>🧬 BioAg Genetics Lab</h1>
-        <label for="animal-select">Select Livestock:</label>
-        <select id="animal-select">
-            <option value="cow">🐄 Cow (Black/Red)</option>
-            <option value="sheep">🐑 Sheep (White/Black)</option>
-            <option value="pig">🐖 Pig (Pink/Black)</option>
-            <option value="horse">🐎 Horse (Bay/Chestnut)</option>
-        </select>
-    </header>
-
+     <header>
+    <h1>🧬 BioAg Genetics Lab</h1>
+    <div class="custom-select-wrapper">
+        <label for="animal-select">Select Species</label>
+        <div class="select-container">
+            <select id="animal-select">
+                <option value="cow">🐄 Bovine (Black/Red)</option>
+                <option value="sheep">🐑 Ovine (White/Black)</option>
+                <option value="pig">🐖 Porcine (Pink/Black)</option>
+                <option value="horse">🐎 Equine (Bay/Chestnut)</option>
+            </select>
+            <span class="custom-arrow"></span>
+        </div>
+    </div>
+</header>
         <form id="cross-form" novalidate>
             <section class="input-grid">
                 <div class="parent-box">
