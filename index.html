@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioAg Genetics Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="lab-card">
+        <header>
+            <h1>🧬 BioAg Genetics Lab</h1>
+            <p>Predicting Bovine Coat Color (B=Black, b=Red)</p>
+        </header>
+
+        <section class="input-grid">
+            <div class="parent-box">
+                <label>Sire (Father)</label>
+                <input type="text" id="p1" value="Bb" maxlength="2">
+            </div>
+            <div class="parent-box">
+                <label>Dam (Mother)</label>
+                <input type="text" id="p2" value="Bb" maxlength="2">
+            </div>
+        </section>
+
+        <button id="run-btn">Run Genetic Cross</button>
+
+        <div id="visual-results">
+            <table id="punnett-table">
+                </table>
+        </div>
+
+        <div id="stats-panel">
+            </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
