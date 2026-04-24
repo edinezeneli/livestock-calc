@@ -1,6 +1,7 @@
 :root {
   --primary: #2c3e50;
   --accent: #27ae60;
+  --reset: #95a5a6; /* New color for Reset */
   --bg: #ecf0f1;
 }
 
@@ -9,7 +10,7 @@ body {
   font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  padding: 20px; /* Reduced padding for mobile */
 }
 
 .lab-card {
@@ -19,13 +20,72 @@ body {
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
+/* Header & Dropdown */
+header {
+  margin-bottom: 25px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 20px;
+}
+
+h1 {
+  color: var(--primary);
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.custom-select-wrapper {
+  text-align: left;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.select-container {
+  position: relative;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 12px;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid #aaa;
+  border-bottom: 2px solid #aaa;
+  transform: translateY(-70%) rotate(-45deg);
+  pointer-events: none;
+}
+
+/* Input Section */
 .input-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  display: flex; /* Switched from grid to flex for better alignment */
+  gap: 15px;
   margin-bottom: 20px;
+}
+
+.parent-box {
+  flex: 1;
+  text-align: left;
+}
+
+.parent-box label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #666;
 }
 
 input {
@@ -35,23 +95,39 @@ input {
   text-align: center;
   border: 2px solid #ddd;
   border-radius: 8px;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Prevents input from overflowing */
 }
 
+/* Buttons */
 button {
   width: 100%;
   padding: 15px;
-  background: var(--accent);
   color: white;
   border: none;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
+  margin-bottom: 10px;
 }
 
-button:hover { background: #219150; }
+#run-btn {
+  background: var(--accent);
+}
 
+#run-btn:hover {
+  background: #219150;
+}
+
+#reset-btn {
+  background: var(--reset);
+}
+
+#reset-btn:hover {
+  background: #7f8c8d;
+}
+
+/* Results Table */
 table {
   width: 100%;
   margin-top: 20px;
@@ -59,98 +135,23 @@ table {
 }
 
 th, td {
-  border: 2px solid #eee;
-  padding: 20px;
+  border: 1px solid #eee;
+  padding: 15px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
-th { background: #f9f9f9; color: var(--primary); }
+th {
+  background: #f9f9f9;
+  color: var(--primary);
+}
 
+/* Statistics */
 .stat-bar {
   background: #f1f8e9;
   margin: 10px 0;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   border-left: 5px solid var(--accent);
-}
-/* Styling the Header Area */
-header {
-    margin-bottom: 30px;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 20px;
-}
-
-h1 {
-    color: var(--primary);
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-/* The Container for the Dropdown */
-.custom-select-wrapper {
-    text-align: left;
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-.custom-select-wrapper label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 5px;
-    margin-left: 5px;
-}
-
-/* The "Glass" Select Box */
-.select-container {
-    position: relative;
-    display: block;
-}
-
-select {
-    appearance: none; /* Removes the ugly default browser arrow */
-    -webkit-appearance: none;
-    width: 100%;
-    padding: 12px 40px 12px 15px;
-    background: #ffffff;
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    font-size: 1rem;
-    color: var(--primary);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-}
-
-/* Hover & Focus Effects */
-select:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
-}
-
-select:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: #f9fffb;
-}
-
-/* Creating a Custom Modern Arrow */
-.custom-arrow {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    width: 12px;
-    height: 12px;
-    border-left: 2px solid #aaa;
-    border-bottom: 2px solid #aaa;
-    transform: translateY(-70%) rotate(-45deg);
-    pointer-events: none; /* Makes sure clicking the arrow still opens the menu */
-}
-
-.select-container:hover .custom-arrow {
-    border-color: var(--accent);
+  text-align: left;
 }
