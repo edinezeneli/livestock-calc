@@ -1,3 +1,13 @@
+const farmQuotes = [
+    "Holy cow, those genes look good!",
+    "Ewe are doing a great job with this selection.",
+    "Don't count your chickens before they hatch... but do check their genotypes.",
+    "Making Mendel proud, one cross at a time.",
+    "Just another day at the office (the barn).",
+    "Pigging out on data today, are we?",
+    "Stable genetics make for a stable barn.",
+    "That's a baaaa-rilliant combination!"
+];
 const animalTraits = {
     cow: { name: "Bovine", dominant: "Black", recessive: "Red" },
     sheep: { name: "Ovine", dominant: "White", recessive: "Black" },
