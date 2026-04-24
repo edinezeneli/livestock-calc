@@ -1,4 +1,3 @@
-// 1. Data Dictionary for Species
 const animalTraits = {
     cow: { name: "Bovine", dominant: "Black", recessive: "Red" },
     sheep: { name: "Ovine", dominant: "White", recessive: "Black" },
@@ -6,49 +5,32 @@ const animalTraits = {
     horse: { name: "Equine", dominant: "Bay", recessive: "Chestnut" }
 };
 
-// 2. The Main Engine
 document.getElementById('run-btn').addEventListener('click', function() {
-    // FRESH data capture: Grab exactly what is in the boxes RIGHT NOW
+    // 1. Get Live Data
     const sInput = document.getElementById('p1').value.trim();
     const dInput = document.getElementById('p2').value.trim();
-    
-    const p1 = sInput.split('');
-    const p2 = dInput.split('');
-    const selectedAnimal = document.getElementById('animal-select').value;
-    const traits = animalTraits[selectedAnimal];
+    const species = document.getElementById('animal-select').value;
+    const traits = animalTraits[species];
 
-    // Validation: Ensure we have 2 alleles per parent
-    if (p1.length !== 2 || p2.length !== 2) {
-        alert("Please enter exactly 2 alleles (e.g., Bb)");
+    // 2. Validate
+    if (sInput.length !== 2 || dInput.length !== 2) {
+        alert("Enter exactly 2 alleles (e.g. Bb)");
         return;
     }
 
-    // Build the Punnett Square
+    const p1 = sInput.split('');
+    const p2 = dInput.split('');
+
+    // 3. Render Table
     const table = document.getElementById('punnett-table');
     table.innerHTML = `
-        <tr>
-            <th></th>
-            <th>${p2[0]}</th>
-            <th>${p2[1]}</th>
-        </tr>
-        <tr>
-            <th>${p1[0]}</th>
-            <td class="cell">${formatAllele(p1[0], p2[0])}</td>
-            <td class="cell">${formatAllele(p1[0], p2[1])}</td>
-        </tr>
-        <tr>
-            <th>${p1[1]}</th>
-            <td class="cell">${formatAllele(p1[1], p2[0])}</td>
-            <td class="cell">${formatAllele(p1[1], p2[1])}</td>
-        </tr>
+        <tr><th></th><th>${p2[0]}</th><th>${p2[1]}</th></tr>
+        <tr><th>${p1[0]}</th><td>${formatAllele(p1[0], p2[0])}</td><td>${formatAllele(p1[0], p2[1])}</td></tr>
+        <tr><th>${p1[1]}</th><td>${formatAllele(p1[1], p2[0])}</td><td>${formatAllele(p1[1], p2[1])}</td></tr>
     `;
 
-    // 3. Calculate Stats for the Panel
-    const outcomes = [
-        p1[0] + p2[0], p1[0] + p2[1], 
-        p1[1] + p2[0], p1[1] + p2[1]
-    ];
-
+    // 4. Calculate Logic
+    const outcomes = [p1[0]+p2[0], p1[0]+p2[1], p1[1]+p2[0], p1[1]+p2[1]];
     let counts = {};
     outcomes.forEach(o => {
         let sorted = formatAllele(o[0], o[1]);
@@ -56,26 +38,20 @@ document.getElementById('run-btn').addEventListener('click', function() {
     });
 
     let statHtml = `<h3>${traits.name} Analysis</h3>`;
-    for (let genotype in counts) {
-        let isDominant = genotype[0] === genotype[0].toUpperCase();
-        let phenotype = isDominant ? traits.dominant : traits.recessive;
-        let percent = (counts[genotype] / 4) * 100;
-        
-        statHtml += `
-            <div class="stat-bar">
-                <strong>${genotype}</strong>: ${percent}% 
-                <span>(${phenotype} trait)</span>
-            </div>`;
+    for (let g in counts) {
+        // If the first letter is uppercase, it shows the dominant trait
+        let isDom = g[0] === g[0].toUpperCase();
+        let pheno = isDom ? traits.dominant : traits.recessive;
+        statHtml += `<div class="stat-bar"><b>${g}:</b> ${(counts[g]/4)*100}% — ${pheno} Trait</div>`;
     }
     document.getElementById('stats-panel').innerHTML = statHtml;
 });
 
-// Helper: Ensures "Bb" instead of "bB" (Bioinformatics standard)
 function formatAllele(a, b) {
+    // Sorts so 'B' always comes before 'b'
     return [a, b].sort((x, y) => x.charCodeAt(0) - y.charCodeAt(0)).join('');
 }
 
-// 4. Reset Button Functionality
 function resetLab() {
     document.getElementById('p1').value = "Bb";
     document.getElementById('p2').value = "Bb";
