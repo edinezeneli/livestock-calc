@@ -1,61 +1,71 @@
 :root {
   --primary: #2c3e50;
-  --accent: #27ae60;
-  --reset: #95a5a6; /* New color for Reset */
-  --bg: #ecf0f1;
+  --accent: #4a7c59; /* Eye-friendly Sage Green */
+  --reset: #95a5a6;
+  --bg: #f4f7f6;
 }
 
 body {
   background: var(--bg);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, sans-serif;
   display: flex;
   justify-content: center;
-  padding: 20px; /* Reduced padding for mobile */
+  padding: 20px;
+  margin: 0;
 }
 
 .lab-card {
   background: white;
   width: 100%;
-  max-width: 500px;
-  border-radius: 20px;
+  max-width: 450px;
+  border-radius: 24px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
   text-align: center;
 }
 
-/* Header & Dropdown */
 header {
   margin-bottom: 25px;
-  border-bottom: 2px solid #f0f0f0;
+  border-bottom: 1px solid #eee;
   padding-bottom: 20px;
 }
 
 h1 {
   color: var(--primary);
-  font-size: 1.6rem;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  margin-top: 0;
 }
 
 .custom-select-wrapper {
   text-align: left;
-  max-width: 300px;
+  max-width: 280px;
   margin: 0 auto;
+}
+
+.custom-select-wrapper label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  margin-left: 5px;
 }
 
 .select-container {
   position: relative;
+  margin-top: 5px;
 }
 
 select {
   appearance: none;
   -webkit-appearance: none;
   width: 100%;
-  padding: 12px;
-  background: #ffffff;
-  border: 2px solid #e0e0e0;
+  padding: 12px 15px;
+  background: #fff;
+  border: 2px solid #edf2f7;
   border-radius: 12px;
+  font-size: 0.95rem;
   cursor: pointer;
-  font-size: 1rem;
+  color: var(--primary);
 }
 
 .custom-arrow {
@@ -64,15 +74,14 @@ select {
   right: 15px;
   width: 8px;
   height: 8px;
-  border-left: 2px solid #aaa;
-  border-bottom: 2px solid #aaa;
+  border-left: 2px solid #cbd5e0;
+  border-bottom: 2px solid #cbd5e0;
   transform: translateY(-70%) rotate(-45deg);
   pointer-events: none;
 }
 
-/* Input Section */
 .input-grid {
-  display: flex; /* Switched from grid to flex for better alignment */
+  display: flex;
   gap: 15px;
   margin-bottom: 20px;
 }
@@ -84,8 +93,9 @@ select {
 
 .parent-box label {
   font-size: 0.8rem;
-  font-weight: bold;
-  color: #666;
+  color: #718096;
+  margin-bottom: 5px;
+  display: block;
 }
 
 input {
@@ -93,30 +103,33 @@ input {
   padding: 12px;
   font-size: 1.2rem;
   text-align: center;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  box-sizing: border-box; /* Prevents input from overflowing */
+  border: 2px solid #edf2f7;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
 }
 
-/* Buttons */
 button {
   width: 100%;
-  padding: 15px;
+  padding: 16px;
   color: white;
   border: none;
-  font-weight: bold;
-  border-radius: 8px;
+  font-weight: 600;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.3s;
-  margin-bottom: 10px;
+  transition: all 0.2s ease;
+  font-size: 1rem;
 }
 
 #run-btn {
   background: var(--accent);
+  margin-bottom: 12px; /* Gap between buttons */
+  box-shadow: 0 4px 12px rgba(74, 124, 89, 0.2);
 }
 
 #run-btn:hover {
-  background: #219150;
+  background: #3d664a;
+  transform: translateY(-1px);
 }
 
 #reset-btn {
@@ -127,31 +140,29 @@ button {
   background: #7f8c8d;
 }
 
-/* Results Table */
 table {
   width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
+  margin-top: 25px;
+  border-collapse: separate;
+  border-spacing: 5px;
 }
 
 th, td {
-  border: 1px solid #eee;
   padding: 15px;
   text-align: center;
   font-size: 1.2rem;
-}
-
-th {
-  background: #f9f9f9;
-  color: var(--primary);
-}
-
-/* Statistics */
-.stat-bar {
-  background: #f1f8e9;
-  margin: 10px 0;
-  padding: 10px;
   border-radius: 8px;
-  border-left: 5px solid var(--accent);
+}
+
+th { background: #f8fafc; color: #64748b; font-size: 0.9rem; }
+td { background: #ffffff; border: 1px solid #edf2f7; color: var(--primary); }
+
+.stat-bar {
+  background: #f0f4f1;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border-left: 4px solid var(--accent);
   text-align: left;
+  font-size: 0.9rem;
 }
